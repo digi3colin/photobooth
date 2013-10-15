@@ -1,5 +1,4 @@
 ﻿package {
-	import com.digi3studio.CountDown;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
@@ -8,9 +7,11 @@
 	import controller.ControllerCountdown;
 	import controller.ControllerFlash;
 	import controller.ControllerScreens;
+	import controller.ControllerScrollFields;
 	import controller.ControllerUserPhotoShot;
 	import controller.ControllerUserRetry;
 
+	import com.digi3studio.CountDown;
 	import com.digi3studio.photobooth.PhotoCapture;
 	import com.digi3studio.photobooth.form.FieldGroup;
 
@@ -42,6 +43,7 @@
 
 			//form ui
 			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview, fieldGroup, photobooth));
+			controllers.push(new ControllerScrollFields(mainView.mc_photopreview,fieldGroup));
 
 			//flashing 
 			controllers.push(new ControllerFlash(mainView.mc_flash,photobooth));
