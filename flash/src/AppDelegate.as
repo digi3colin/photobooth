@@ -1,15 +1,16 @@
 ﻿package {
-	import com.digi3studio.photobooth.form.FieldGroup;
-	import controller.ControllerAddRemoveFriend;
-	import controller.ControllerUserRetry;
 	import asset.MainView;
 
+	import controller.ControllerAddRemoveFriend;
 	import controller.ControllerCamera;
 	import controller.ControllerCaptureAndShowPhoto;
-	import controller.ControllerUserPhotoShot;
+	import controller.ControllerFlash;
 	import controller.ControllerScreens;
+	import controller.ControllerUserPhotoShot;
+	import controller.ControllerUserRetry;
 
 	import com.digi3studio.photobooth.PhotoCapture;
+	import com.digi3studio.photobooth.form.FieldGroup;
 
 
 	/**
@@ -36,9 +37,11 @@
 			controllers.push(new ControllerCamera(mainView.mc_photobooth['mc_photo']));
 			controllers.push(new ControllerCaptureAndShowPhoto(mainView,photobooth,photoCapture));
 
-			//form
+			//form ui
 			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview, fieldGroup, photobooth));
 
+			//flashing 
+			controllers.push(new ControllerFlash(mainView.mc_flash,photobooth));
 
 			photobooth.start();
 		}

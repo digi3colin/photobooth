@@ -6,5 +6,6 @@ package asset {
 	public class MainView extends Sprite{
 		public var mc_photobooth : Sprite;
 		public var mc_photopreview : Sprite;
+		public var mc_flash:Sprite;
 	}
 }
