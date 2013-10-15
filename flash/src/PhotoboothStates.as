@@ -1,4 +1,4 @@
-﻿package  {
+﻿package {
 	import com.fastframework.core.FASTEventDispatcher;
 
 	import flash.events.Event;
@@ -9,6 +9,7 @@
 	 */
 	public class PhotoboothStates extends FASTEventDispatcher {
 		public static const EVENT_START_TO_SHOT : String 	= "EVENT_START_TO_SHOT";
+		public static const EVENT_PREPARE_SHOT :String      = 'EVENT_PREPARE_SHOT';
 		public static const EVENT_SHOT:String 				= "EVENT_SHOT";
 		public static const EVENT_VIEW_INPUT_EMAIL : String = "EVENT_VIEW_INPUT_EMAIL";
 		public static const EVENT_SEND : String 			= "EVENT_SEND";
@@ -23,6 +24,10 @@
 		public function start():void{
 			saveTime = -1;
 			dispatchEvent(new Event(PhotoboothStates.EVENT_START_TO_SHOT));
+		}
+
+		public function prepareShot():void{
+			dispatchEvent(new Event(PhotoboothStates.EVENT_PREPARE_SHOT));
 		}
 
 		public function shot() : void {

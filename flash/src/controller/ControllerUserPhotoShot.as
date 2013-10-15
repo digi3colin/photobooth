@@ -19,7 +19,8 @@ package controller {
 		}
 
 		private function clickShotButton(e:Event):void{
-			photobooth.shot();
+			//prepare to shot. do real shot after preparation. for example: countdown
+			photobooth.prepareShot();
 		}
 	}
 }

@@ -1,9 +1,11 @@
 ﻿package {
+	import com.digi3studio.CountDown;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
 	import controller.ControllerCamera;
 	import controller.ControllerCaptureAndShowPhoto;
+	import controller.ControllerCountdown;
 	import controller.ControllerFlash;
 	import controller.ControllerScreens;
 	import controller.ControllerUserPhotoShot;
@@ -27,6 +29,7 @@
 //			var formPhotoSnap:FormPhotoSnap 		= new FormPhotoSnap(AppConfig.EVENT_ID,AppConfig.UPLOAD_PATH);
 
 			var fieldGroup:FieldGroup				= new FieldGroup();
+			var countDown:CountDown					= new CountDown(AppConfig.SHOT_COUNTDOWN);
 
 			//mock up the application
 			controllers.push(new ControllerScreens(mainView, photobooth));
@@ -42,7 +45,7 @@
 
 			//flashing 
 			controllers.push(new ControllerFlash(mainView.mc_flash,photobooth));
-
+			controllers.push(new ControllerCountdown(mainView.mc_photobooth['mc_countdown'], countDown, photobooth));
 			photobooth.start();
 		}
 	}
