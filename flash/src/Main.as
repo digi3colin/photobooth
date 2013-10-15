@@ -1,7 +1,10 @@
 ﻿package 
 {
 	import asset.MainView;
+
 	import com.digi3studio.utils.MainHelper;
+	import com.fastframework.log.FASTLog;
+
 	import flash.display.Sprite;
 
 	public class Main extends Sprite implements IMain
@@ -12,6 +15,9 @@
 		public function Main(){
 			//initalise the view;
 			new MainHelper(this,mcVP=new MainView(),this);
+			FASTLog.instance().addGlobalError(this.loaderInfo);
+
+			AppConfig.BASE_URL="http://digi3studio.com/";
 			mcVP.scaleX = mcVP.scaleY = 0.5;
 		}
 
