@@ -7,3 +7,9 @@
 [submodule "flash/src_module/com/fastframework/module/d3log"]
 	path = flash/src_module/com/fastframework/module/d3log
 	url = https://github.com/digi3colin/d3log
+[submodule "flash/src_module/com/fastframework/module/d3view"]
+	path = flash/src_module/com/fastframework/module/d3view
+	url = https://github.com/digi3colin/d3view
+[submodule "flash/src_module/com/fastframework/module/d3animate"]
+	path = flash/src_module/com/fastframework/module/d3animate
+	url = https://github.com/digi3colin/d3animate
