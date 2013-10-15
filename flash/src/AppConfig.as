@@ -24,7 +24,7 @@
 		public static var CARD_SIZE_SCALE : Number = 0.5686;
 		public static var KIOSK_HEIGHT : Number = 1920;
 		public static var KIOSK_WIDTH : Number = 1080;
-		public static var FIELD_HEIGHT : Number = 64;
+		public static var FIELD_HEIGHT : Number = 100;
 		public static var EVENT_ID : String ="testing";
 
 		public static var CAMERA_WIDTH : int	=404;
@@ -36,6 +36,8 @@
 		public static var BINARY_IO: ISaveBinary;
 
 		public static var MESSAGE : XML;
-		public static var SHOW_LOGO:Boolean = false;
+		public static var SHOW_LOGO : Boolean = false;
+		public static var FIELD_COUNT : Number = 5;
+
 	}
 }

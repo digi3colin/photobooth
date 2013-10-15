@@ -13,3 +13,6 @@
 [submodule "flash/src_module/com/fastframework/module/d3animate"]
 	path = flash/src_module/com/fastframework/module/d3animate
 	url = https://github.com/digi3colin/d3animate
+[submodule "flash/src_module/com/fastframework/module/d3input"]
+	path = flash/src_module/com/fastframework/module/d3input
+	url = https://github.com/digi3colin/d3input
