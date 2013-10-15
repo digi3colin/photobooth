@@ -13,6 +13,7 @@
 
 	/**
 	 * @author Digi3Studio - Colin Leung
+	 * 1st part of the form, Post the photo.
 	 */
 	public class FormPhotoSnap extends FASTEventDispatcher implements IForm{
 		public static const EVENT_INVALID_FORM_BLANK:String = "EVENT_INVALID_FORM_BLANK";

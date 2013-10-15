@@ -10,10 +10,9 @@
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
 
-
-
 	/**
 	 * @author Digi3Studio - Colin Leung
+	 * the 2nd part of the form, for name and email posting.
 	 */
 	public class FormNameAndEmail extends FASTEventDispatcher implements IForm{
 		public static const EVENT_INVALID_FORM_BLANK:String = "EVENT_INVALID_FORM_BLANK";
@@ -132,5 +131,15 @@
 				//no stream. 
 			}
 		}
+	}
+}
+
+class FieldNameEmail {
+	public var name:String;
+	public var email : String;
+
+	public function FieldNameEmail(name : String, email : String) {
+		this.name = name;
+		this.email = email;
 	}
 }
