@@ -1,4 +1,5 @@
 ﻿package {
+	import controller.ControllerValidateForm;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
@@ -14,6 +15,8 @@
 	import com.digi3studio.CountDown;
 	import com.digi3studio.photobooth.PhotoCapture;
 	import com.digi3studio.photobooth.form.FieldGroup;
+	import com.digi3studio.photobooth.form.FormNameAndEmail;
+	import com.digi3studio.photobooth.form.FormPhotoSnap;
 
 
 	/**
@@ -26,8 +29,8 @@
 			//initalize core models
 			var photobooth:PhotoboothStates 		= new PhotoboothStates();
 			var photoCapture:PhotoCapture 			= new PhotoCapture();
-//			var formNameAndEmail:FormNameAndEmail 	= new FormNameAndEmail(AppConfig.DEVICE_ID,AppConfig.MESSAGE.toXMLString(),AppConfig.SEND_PATH,AppConfig.EVENT_ID);
-//			var formPhotoSnap:FormPhotoSnap 		= new FormPhotoSnap(AppConfig.EVENT_ID,AppConfig.UPLOAD_PATH);
+			var formNameAndEmail:FormNameAndEmail 	= new FormNameAndEmail(AppConfig.DEVICE_ID,AppConfig.MESSAGE.toXMLString(),AppConfig.SEND_PATH,AppConfig.EVENT_ID);
+			var formPhotoSnap:FormPhotoSnap 		= new FormPhotoSnap(AppConfig.EVENT_ID,AppConfig.UPLOAD_PATH);
 
 			var fieldGroup:FieldGroup				= new FieldGroup();
 			var countDown:CountDown					= new CountDown(AppConfig.SHOT_COUNTDOWN);
@@ -44,6 +47,7 @@
 			//form ui
 			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview, fieldGroup, photobooth));
 			controllers.push(new ControllerScrollFields(mainView.mc_photopreview,fieldGroup));
+			controllers.push(new ControllerValidateForm(mainView.mc_photopreview,photobooth,formNameAndEmail,formPhotoSnap,fieldGroup));
 
 			//flashing 
 			controllers.push(new ControllerFlash(mainView.mc_flash,photobooth));

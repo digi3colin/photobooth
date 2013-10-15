@@ -35,7 +35,7 @@
 		public static var TEXT_IO : ISaveText;
 		public static var BINARY_IO: ISaveBinary;
 
-		public static var MESSAGE : XML;
+		public static var MESSAGE : XML = new XML();
 		public static var SHOW_LOGO : Boolean = false;
 		public static var FIELD_COUNT : Number = 5;
 
