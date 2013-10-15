@@ -41,8 +41,6 @@
 			photo = new BitmapData(capture_width, capture_height, false);
 			photo.draw(mcPhoto,m,null,null,null,true);
 
-			//mcPhoto.stage.addChild(new Bitmap(photo));
-
 			Sprite(mcPhoto['mc_video']).removeChild(bmp);
 
 			dispatchEvent(new Event(PhotoCapture.EVENT_CAPTURE_DONE));
