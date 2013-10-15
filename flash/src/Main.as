@@ -12,6 +12,7 @@
 		public function Main(){
 			//initalise the view;
 			new MainHelper(this,mcVP=new MainView(),this);
+			mcVP.scaleX = mcVP.scaleY = 0.5;
 		}
 
 		public function start():void{
