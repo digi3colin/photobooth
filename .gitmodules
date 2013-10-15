@@ -1,0 +1,9 @@
+[submodule "flash/src_module/com/fastframework/d3form"]
+	path = flash/src_module/com/fastframework/d3form
+	url = https://github.com/digi3colin/d3form
+[submodule "flash/src_module/com/fastframework/module/d3form"]
+	path = flash/src_module/com/fastframework/module/d3form
+	url = https://github.com/digi3colin/d3form
+[submodule "flash/src_module/com/fastframework/module/d3log"]
+	path = flash/src_module/com/fastframework/module/d3log
+	url = https://github.com/digi3colin/d3log
