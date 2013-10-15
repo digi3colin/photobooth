@@ -72,7 +72,7 @@
 			req.contentType = 'application/octet-stream';
 			req.method = URLRequestMethod.POST;
 			req.data = image;
-			
+			FASTLog.instance().log(req.url,FASTLog.LOG_LEVEL_DETAIL);
 			ld.load(req);
 		}
 

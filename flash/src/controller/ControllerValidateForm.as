@@ -44,7 +44,7 @@ package controller {
 			}
 
 			if(formNameAndEmail.validate()==false)return;
-			photobooth.save(new Date().time);
+			photobooth.send();
 		}
 	}
 }
