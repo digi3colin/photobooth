@@ -1,5 +1,7 @@
-﻿package com.digi3studio.utils{
+﻿package com.digi3studio.utils {
 	import asset.MainView;
+
+	import com.fastframework.module.d3crossplatform.IMain;
 
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
