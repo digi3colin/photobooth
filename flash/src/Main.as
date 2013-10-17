@@ -16,8 +16,6 @@
 			//initalise the view;
 			new MainHelper(this,mcVP=new MainView(),this);
 			FASTLog.instance().addGlobalError(this.loaderInfo);
-
-			AppConfig.BASE_URL="http://digi3studio.com/";
 			mcVP.scaleX = mcVP.scaleY = 0.5;
 		}
 

@@ -6,6 +6,8 @@
 	import controller.ControllerCaptureAndShowPhoto;
 	import controller.ControllerCountdown;
 	import controller.ControllerFlash;
+	import controller.ControllerFormSubmitStatus;
+	import controller.ControllerInvaildMessage;
 	import controller.ControllerLog;
 	import controller.ControllerSaveData;
 	import controller.ControllerScreens;
@@ -54,6 +56,9 @@
 			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview, fieldGroup, photobooth));
 			controllers.push(new ControllerScrollFields(mainView.mc_photopreview,fieldGroup));
 			controllers.push(new ControllerValidateForm(mainView.mc_photopreview,photobooth,formNameAndEmail,formPhotoSnap,fieldGroup));
+			//validate message and form submit status
+			controllers.push(new ControllerInvaildMessage(mainView.mc_photopreview['mc_message'],fieldGroup,formNameAndEmail,photobooth));
+			controllers.push(new ControllerFormSubmitStatus(mainView.mc_photopreview['mc_status'],formNameAndEmail,formPhotoSnap,photobooth));
 
 			//flashing 
 			controllers.push(new ControllerFlash(mainView.mc_flash,photobooth));
@@ -61,7 +66,7 @@
 
 			//save data
 			controllers.push(new ControllerSaveData(mainView.mc_photopreview, photobooth, fieldGroup, formNameAndEmail, formPhotoSnap, photoComposition));
-	
+
 			photobooth.start();
 		}
 	}
