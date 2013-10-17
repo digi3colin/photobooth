@@ -1,4 +1,5 @@
 ﻿package {
+	import controller.ControllerSetConfig;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
@@ -9,11 +10,11 @@
 	import controller.ControllerFormSubmitStatus;
 	import controller.ControllerInvaildMessage;
 	import controller.ControllerLog;
+	import controller.ControllerReset;
 	import controller.ControllerSaveData;
 	import controller.ControllerScreens;
 	import controller.ControllerScrollFields;
 	import controller.ControllerUserPhotoShot;
-	import controller.ControllerUserRetry;
 	import controller.ControllerValidateForm;
 
 	import com.digi3studio.CountDown;
@@ -42,12 +43,14 @@
 			var fieldGroup:FieldGroup				= new FieldGroup();
 			var countDown:CountDown					= new CountDown(AppConfig.SHOT_COUNTDOWN);
 
-			var photoComposition:PhotoComposition   = new PhotoComposition(new PNGEncoder());
+			var photoComposition:PhotoComposition   = new PhotoComposition(new PNGEncoder(),AppConfig.CARD_SIZE_SCALE,AppConfig.CARD_SIZE_WIDTH,AppConfig.CARD_SIZE_HEIGHT);
+			//adjust the AppConfig
+			controllers.push(new ControllerSetConfig(mainView.mc_photobooth));
 			//mock up the application
 			controllers.push(new ControllerScreens(mainView, photobooth));
 			//add the photoshot interaction
 			controllers.push(new ControllerUserPhotoShot(mainView,photobooth));
-			controllers.push(new ControllerUserRetry(mainView,photobooth));
+
 			//bind the camera
 			controllers.push(new ControllerCamera(mainView.mc_photobooth['mc_photo']));
 			controllers.push(new ControllerCaptureAndShowPhoto(mainView,photobooth,photoCapture));
@@ -67,6 +70,8 @@
 			//save data
 			controllers.push(new ControllerSaveData(mainView.mc_photopreview, photobooth, fieldGroup, formNameAndEmail, formPhotoSnap, photoComposition));
 
+			//reset after submit data
+			controllers.push(new ControllerReset(mainView.mc_photopreview, photobooth, formNameAndEmail, formPhotoSnap));
 			photobooth.start();
 		}
 	}

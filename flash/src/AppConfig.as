@@ -9,23 +9,22 @@
 	public class AppConfig {
 		public static var DEVICE_ID : String = "";
 		public static var REMOTE_SERVER : String = "";
-		public static var BASE_URL : String = "http://photobooth.digi3studio.com/hk_en/test/";
+		public static var BASE_URL : String = "http://vc.digi3studio.com/hk_en/yelloween2013-hk/";
+		public static var EVENT_ID : String = "hk_yelloween2013";
 		
 		public static var SEND_PATH : String = "card/send.xml?sessionid=";
 		public static var UPLOAD_PATH : String = "file/upload.xml?name=asset&folder=card";
 	
 		public static var SHOT_COUNTDOWN:int = 3;
 
-		public static var CARD_MAX_WIDTH:Number;
-		public static var CARD_MAX_HEIGHT:Number;
+		public static var CARD_SIZE_WIDTH:Number = 800;
+		public static var CARD_SIZE_HEIGHT:Number = 678;
+		public static var CARD_SIZE_SCALE : Number = 0.520833;
 
-		public static var CARD_SIZE_WIDTH:Number = 580;
-		public static var CARD_SIZE_HEIGHT:Number = 357;
-		public static var CARD_SIZE_SCALE : Number = 0.5686;
-		public static var KIOSK_HEIGHT : Number = 2048;
 		public static var KIOSK_WIDTH : Number = 1536;
+		public static var KIOSK_HEIGHT : Number = 2048;
+
 		public static var FIELD_HEIGHT : Number = 100;
-		public static var EVENT_ID : String ="test";
 
 		public static var CAMERA_WIDTH : int	=404;
 		public static var CAMERA_HEIGHT : int	=734;
