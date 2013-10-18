@@ -22,3 +22,6 @@
 [submodule "flash/src_module/com/fastframework/module/d3storage"]
 	path = flash/src_module/com/fastframework/module/d3storage
 	url = https://github.com/digi3colin/d3storage
+[submodule "flash/src_module/com/fastframework/module/d3utils"]
+	path = flash/src_module/com/fastframework/module/d3utils
+	url = https://github.com/digi3colin/d3utils

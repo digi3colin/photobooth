@@ -7,5 +7,8 @@ package asset {
 		public var mc_photobooth : Sprite;
 		public var mc_photopreview : Sprite;
 		public var mc_flash:Sprite;
+		
+		public var mc_admin:Sprite;
+		public var btn_admin:Sprite;
 	}
 }

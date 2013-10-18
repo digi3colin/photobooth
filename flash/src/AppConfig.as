@@ -9,8 +9,8 @@
 	public class AppConfig {
 		public static var DEVICE_ID : String = "";
 		public static var REMOTE_SERVER : String = "";
-		public static var BASE_URL : String = "baseurl";
-		public static var EVENT_ID : String = "test";
+		public static var BASE_URL : String = "http://vc.digi3studio.com/hk_en/yelloween2013-hk/";
+		public static var EVENT_ID : String = "hk_yelloween2013";
 		
 		public static var SEND_PATH : String = "card/send.xml?sessionid=";
 		public static var UPLOAD_PATH : String = "file/upload.xml?name=asset&folder=card";
@@ -34,7 +34,7 @@
 		public static var TEXT_IO : ISaveText;
 		public static var BINARY_IO: ISaveBinary;
 
-		public static var MESSAGE : XML = new XML();
+		public static var MESSAGE : XML = new XML('<msg/>');
 		public static var SHOW_LOGO : Boolean = false;
 		public static var FIELD_COUNT : Number = 5;
 

@@ -2,11 +2,13 @@
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
+	import controller.ControllerAdminEventName;
 	import controller.ControllerCamera;
 	import controller.ControllerCaptureAndShowPhoto;
 	import controller.ControllerCountdown;
 	import controller.ControllerFlash;
 	import controller.ControllerFormSubmitStatus;
+	import controller.ControllerGenerateDeviceId;
 	import controller.ControllerInvaildMessage;
 	import controller.ControllerLocalStorage;
 	import controller.ControllerLog;
@@ -15,6 +17,7 @@
 	import controller.ControllerScreens;
 	import controller.ControllerScrollFields;
 	import controller.ControllerSetConfig;
+	import controller.ControllerShowAdminPanel;
 	import controller.ControllerUserPhotoShot;
 	import controller.ControllerValidateForm;
 
@@ -76,6 +79,12 @@
 
 			//reset after submit data
 			controllers.push(new ControllerReset(mainView.mc_photopreview, photobooth, formNameAndEmail, formPhotoSnap));
+
+			//administrator features
+			controllers.push(new ControllerGenerateDeviceId(AppConfig.TEXT_IO));
+			controllers.push(new ControllerShowAdminPanel(mainView.mc_admin,mainView.btn_admin));
+			controllers.push(new ControllerAdminEventName(mainView.mc_admin,mainView.mc_photobooth,mainView.mc_photopreview,AppConfig.TEXT_IO,AppConfig.MESSAGE));
+
 			photobooth.start();
 		}
 	}
