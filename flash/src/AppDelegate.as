@@ -1,5 +1,4 @@
 ﻿package {
-	import controller.ControllerSetConfig;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
@@ -9,11 +8,13 @@
 	import controller.ControllerFlash;
 	import controller.ControllerFormSubmitStatus;
 	import controller.ControllerInvaildMessage;
+	import controller.ControllerLocalStorage;
 	import controller.ControllerLog;
 	import controller.ControllerReset;
 	import controller.ControllerSaveData;
 	import controller.ControllerScreens;
 	import controller.ControllerScrollFields;
+	import controller.ControllerSetConfig;
 	import controller.ControllerUserPhotoShot;
 	import controller.ControllerValidateForm;
 
@@ -69,6 +70,9 @@
 
 			//save data
 			controllers.push(new ControllerSaveData(mainView.mc_photopreview, photobooth, fieldGroup, formNameAndEmail, formPhotoSnap, photoComposition));
+
+			//save data to local device
+			controllers.push(new ControllerLocalStorage(mainView.mc_photopreview, photobooth, photoComposition, fieldGroup, AppConfig.BINARY_IO, AppConfig.TEXT_IO));
 
 			//reset after submit data
 			controllers.push(new ControllerReset(mainView.mc_photopreview, photobooth, formNameAndEmail, formPhotoSnap));

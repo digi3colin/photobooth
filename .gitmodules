@@ -19,3 +19,6 @@
 [submodule "flash/src_module/com/fastframework/module/d3crossplatform"]
 	path = flash/src_module/com/fastframework/module/d3crossplatform
 	url = https://github.com/digi3colin/d3crossplatform
+[submodule "flash/src_module/com/fastframework/module/d3storage"]
+	path = flash/src_module/com/fastframework/module/d3storage
+	url = https://github.com/digi3colin/d3storage

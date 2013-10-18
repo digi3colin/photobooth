@@ -9,6 +9,8 @@
 	import com.fastframework.module.d3crossplatform.PlatformAND;
 	import com.fastframework.module.d3crossplatform.PlatformIOS;
 	import com.fastframework.module.d3crossplatform.PlatformWIN;
+	import com.fastframework.module.d3storage.SaveBinAIR;
+	import com.fastframework.module.d3storage.SaveTextAIR;
 
 	import flash.display.Sprite;
 	import flash.system.Capabilities;
@@ -27,14 +29,20 @@
 			switch (Capabilities.version.split(' ')[0]){
 				case "IOS":
 					platform = new PlatformIOS();
+					AppConfig.TEXT_IO = new SaveTextAIR();
+					AppConfig.BINARY_IO = new SaveBinAIR();
 					AppConfig.CAMERA_ID= "1";
 					break;
 				case "AND":
 					platform = new PlatformAND();
+					AppConfig.TEXT_IO = new SaveTextAIR();
+					AppConfig.BINARY_IO = new SaveBinAIR();
 					AppConfig.CAMERA_ID= "0";
 					break;
 				default:
 					platform = new PlatformWIN();
+					AppConfig.TEXT_IO = new SaveTextAIR();
+					AppConfig.BINARY_IO = new SaveBinAIR();
 					AppConfig.CAMERA_ID= "0";
 			}
 		}
