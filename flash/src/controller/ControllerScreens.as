@@ -15,16 +15,12 @@ package controller {
 		private var viewForm:IView;
 		private var viewEditor:IView;
 
-		private var photobooth:PhotoboothStates;
-
 		public function ControllerScreens(mc : MainView, photobooth : PhotoboothStates) {
 			viewPhotoBooth 		= new ShowHideView(mc.mc_photobooth);
 			viewPhotoPreview	= new ShowHideView(mc.mc_photopreview);
 
 			viewForm 			= new ShowHideView(mc.mc_photopreview['mc_form']);
 			viewEditor			= new ShowHideView(mc.mc_photopreview['mc_editor']);
-
-			this.photobooth = photobooth;
 
 			photobooth.when(PhotoboothStates.EVENT_EDIT,showCard);
 			photobooth.when(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL,showForm);

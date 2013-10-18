@@ -1,4 +1,6 @@
 ﻿package {
+	import controller.ControllerDragOutDelete;
+	import controller.ControllerResetSticker;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
@@ -6,6 +8,7 @@
 	import controller.ControllerCamera;
 	import controller.ControllerCaptureAndShowPhoto;
 	import controller.ControllerCountdown;
+	import controller.ControllerEditWithSticker;
 	import controller.ControllerFlash;
 	import controller.ControllerFormSubmitStatus;
 	import controller.ControllerGenerateDeviceId;
@@ -28,6 +31,7 @@
 	import com.digi3studio.photobooth.form.FormNameAndEmail;
 	import com.digi3studio.photobooth.form.FormPhotoSnap;
 	import com.digi3studio.utils.PNGEncoder;
+	import com.fastframework.module.d3mobile.CloneSprite;
 
 
 	/**
@@ -37,6 +41,8 @@
 		private var controllers:Array = [];
 		
 		public function AppDelegate(mainView:MainView) {
+			AppConfig.SHOT_COUNTDOWN = 1;
+			
 			controllers.push(new ControllerLog());
 			//initalize core models
 			var photobooth:PhotoboothStates 		= new PhotoboothStates();
@@ -48,6 +54,8 @@
 			var countDown:CountDown					= new CountDown(AppConfig.SHOT_COUNTDOWN);
 
 			var photoComposition:PhotoComposition   = new PhotoComposition(new PNGEncoder(),AppConfig.CARD_SIZE_SCALE,AppConfig.CARD_SIZE_WIDTH,AppConfig.CARD_SIZE_HEIGHT);
+			var cloneSprites:Vector.<CloneSprite>   = new Vector.<CloneSprite>();
+
 			//adjust the AppConfig
 			controllers.push(new ControllerSetConfig(mainView.mc_photobooth));
 			//mock up the application
@@ -60,8 +68,8 @@
 			controllers.push(new ControllerCaptureAndShowPhoto(mainView,photobooth,photoCapture));
 
 			//form ui
-			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview['mc_form'], fieldGroup, photobooth));
-			controllers.push(new ControllerScrollFields(mainView.mc_photopreview['mc_form'],fieldGroup));
+			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview['mc_form'], fieldGroup, photobooth,AppConfig.FIELD_COUNT,AppConfig.FIELD_HEIGHT));
+			controllers.push(new ControllerScrollFields(mainView.mc_photopreview['mc_form'],fieldGroup,AppConfig.FIELD_COUNT,AppConfig.FIELD_HEIGHT));
 			controllers.push(new ControllerValidateForm(mainView.mc_photopreview['mc_form'],photobooth,formNameAndEmail,formPhotoSnap,fieldGroup));
 
 			//validate message and form submit status
@@ -71,6 +79,11 @@
 			//flashing 
 			controllers.push(new ControllerFlash(mainView.mc_flash,photobooth));
 			controllers.push(new ControllerCountdown(mainView.mc_photobooth['mc_countdown'], countDown, photobooth));
+
+			//edit the photo
+			controllers.push(new ControllerEditWithSticker(mainView.mc_photopreview['mc_editor'],mainView.mc_photopreview['mc_send_preview'],cloneSprites));
+			controllers.push(new ControllerResetSticker(photobooth,cloneSprites));
+			controllers.push(new ControllerDragOutDelete(cloneSprites));
 
 			//save data
 			controllers.push(new ControllerSaveData(mainView.mc_photopreview, photobooth, fieldGroup, formNameAndEmail, formPhotoSnap, photoComposition));

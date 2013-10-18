@@ -25,3 +25,6 @@
 [submodule "flash/src_module/com/fastframework/module/d3utils"]
 	path = flash/src_module/com/fastframework/module/d3utils
 	url = https://github.com/digi3colin/d3utils
+[submodule "flash/src_module/com/fastframework/module/d3mobile"]
+	path = flash/src_module/com/fastframework/module/d3mobile
+	url = https://github.com/digi3colin/d3mobile

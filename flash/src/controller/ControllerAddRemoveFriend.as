@@ -15,11 +15,15 @@
 		private var mcFields:Sprite;
 
 		private var fieldGroup : FieldGroup;
-		private var btnAddFriend:ButtonClip;
+		private var btnAddFriend : ButtonClip;
+		private var fieldDisplayCount : int;
+		private var fieldHeight : int;
 
-		public function ControllerAddRemoveFriend(mcForm:Sprite,fieldGroup:FieldGroup,photobooth:PhotoboothStates){
-			photobooth.when(PhotoboothStates.EVENT_SHOT, initForm);
+		public function ControllerAddRemoveFriend(mcForm:Sprite,fieldGroup:FieldGroup,photobooth:PhotoboothStates,fieldCount:int,fieldHeight:int){
+			photobooth.when(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL, initForm);
+			this.fieldDisplayCount = fieldCount;
 			this.fieldGroup = fieldGroup;
+			this.fieldHeight = fieldHeight;
 			mcFields = mcForm['form_fields'];
 			btnAddFriend = new ButtonClip(mcForm['btn_add_friend']).when(ButtonClipEvent.CLICK, clickAddFriend);
 		}
@@ -30,7 +34,7 @@
 				fieldGroup.getFieldAt(0).remove();
 			}
 
-			for(i=0;i<AppConfig.FIELD_COUNT;i++){
+			for(i=0;i<this.fieldDisplayCount;i++){
 				doAddFriend();			
 			}
 		}
@@ -53,7 +57,7 @@
 			fieldGroup.removeField(FormFieldFriendName(e.target));
 
 			for(var i:int=0;i<fieldGroup.getCount();i++){
-				fieldGroup.getFieldAt(i).y = i*AppConfig.FIELD_HEIGHT;
+				fieldGroup.getFieldAt(i).y = i*this.fieldHeight;
 			}
 		}
 	}
