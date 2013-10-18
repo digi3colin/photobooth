@@ -18,7 +18,7 @@
 			an.ease = Animator.EASE_LINEAR;
 			an.to(0).skip().when(Animator.EVENT_END, hideSprite);
 
-			photoSteps.when(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL, flash);
+			photoSteps.when(PhotoboothStates.EVENT_EDIT, flash);
 		}
 		
 		private function flash(e:Event):void{

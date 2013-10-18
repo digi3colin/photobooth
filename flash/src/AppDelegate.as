@@ -86,6 +86,8 @@
 			controllers.push(new ControllerShowAdminPanel(mainView.mc_admin,mainView.btn_admin));
 			controllers.push(new ControllerAdminEventName(mainView.mc_admin,mainView.mc_photobooth,mainView.mc_photopreview,AppConfig.TEXT_IO,AppConfig.MESSAGE));
 
+
+			controllers.push(new ControllerDebugScreens(photobooth)); 
 			photobooth.start();
 		}
 	}

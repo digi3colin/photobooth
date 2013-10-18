@@ -21,6 +21,7 @@
 		private var btnCancel : ButtonClip;
 		private var formNameAndEmail : FormNameAndEmail;
 		private var formPhotoSnap : FormPhotoSnap;
+		private var btnRetryOnEdit : ButtonClip;
 
 		public function ControllerReset(mcPhotoPreview : Sprite, photobooth : PhotoboothStates, formNameAndEmail : FormNameAndEmail, formPhotoSnap : FormPhotoSnap) {
 			timer = new Timer(2000,1);
@@ -32,6 +33,7 @@
 			formPhotoSnap.when(FormPhotoSnap.EVENT_SUBMIT_END, submitEnd);
 
 			btnRetry = new ButtonClip(mcPhotoPreview['mc_form']['btn_retry']).when(ButtonClipEvent.CLICK, userReset);
+			btnRetryOnEdit = new ButtonClip(mcPhotoPreview['mc_editor']['btn_retry']).when(ButtonClipEvent.CLICK, userReset);
 			btnCancel = new ButtonClip(mcPhotoPreview['mc_status']['btn_cancel']).when(ButtonClipEvent.CLICK, userCancel);
 		}
 

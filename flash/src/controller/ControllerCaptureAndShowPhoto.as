@@ -45,7 +45,7 @@ package controller {
 			//place the captured photo to mcPhotoPreview
 			this.preview.bitmapData = this.photoCapture.getPhotoBitmapData();
 			//after capture, photobooth show the preview
-			this.photobooth.view();
+			this.photobooth.edit();
 		}
 	}
 }

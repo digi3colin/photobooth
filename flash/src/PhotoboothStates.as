@@ -15,7 +15,8 @@
 		public static const EVENT_SEND : String 			= "EVENT_SEND";
 		public static const EVENT_RESET : String 			= "EVENT_RESET";
 		public static const EVENT_SAVE_START : String 		= "EVENT_SAVE_START";
-		public static const EVENT_SAVE_POST:String			= "EVENT_SAVE_POST";
+		public static const EVENT_SAVE_POST : String 	    = "EVENT_SAVE_POST";
+		public static const EVENT_EDIT : String 			= "EVENT_EDIT";
 		private var saveTime : Number;
 
 		public function PhotoboothStates() {
@@ -33,7 +34,11 @@
 		public function shot() : void {
 			dispatchEvent(new Event(PhotoboothStates.EVENT_SHOT));
 		}
-		
+
+		public function edit() :void{
+			dispatchEvent(new Event(PhotoboothStates.EVENT_EDIT));
+		}
+
 		public function view():void{
 			dispatchEvent(new Event(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL));
 		}
