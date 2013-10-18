@@ -19,13 +19,13 @@ package controller {
 		private var formPhotoSnap : FormPhotoSnap;
 		private var fieldGroup : FieldGroup;
 
-		public function ControllerValidateForm(mc_photopreview : Sprite, photobooth : PhotoboothStates,formNameAndEmail:FormNameAndEmail,formPhotoSnap:FormPhotoSnap,fieldGroup:FieldGroup) {
+		public function ControllerValidateForm(mcForm : Sprite, photobooth : PhotoboothStates,formNameAndEmail:FormNameAndEmail,formPhotoSnap:FormPhotoSnap,fieldGroup:FieldGroup) {
 			this.photobooth = photobooth;
 			this.formNameAndEmail = formNameAndEmail;
 			this.formPhotoSnap = formPhotoSnap;
 			this.fieldGroup = fieldGroup;
 
-			this.btn_send = new ButtonClip(mc_photopreview['btn_send']).when(ButtonClipEvent.CLICK, onClickSend);
+			this.btn_send = new ButtonClip(mcForm['btn_send']).when(ButtonClipEvent.CLICK, onClickSend);
 		}
 		
 		private function onClickSend(e:Event):void{

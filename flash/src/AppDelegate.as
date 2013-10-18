@@ -60,9 +60,10 @@
 			controllers.push(new ControllerCaptureAndShowPhoto(mainView,photobooth,photoCapture));
 
 			//form ui
-			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview, fieldGroup, photobooth));
-			controllers.push(new ControllerScrollFields(mainView.mc_photopreview,fieldGroup));
-			controllers.push(new ControllerValidateForm(mainView.mc_photopreview,photobooth,formNameAndEmail,formPhotoSnap,fieldGroup));
+			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview['mc_form'], fieldGroup, photobooth));
+			controllers.push(new ControllerScrollFields(mainView.mc_photopreview['mc_form'],fieldGroup));
+			controllers.push(new ControllerValidateForm(mainView.mc_photopreview['mc_form'],photobooth,formNameAndEmail,formPhotoSnap,fieldGroup));
+
 			//validate message and form submit status
 			controllers.push(new ControllerInvaildMessage(mainView.mc_photopreview['mc_message'],fieldGroup,formNameAndEmail,photobooth));
 			controllers.push(new ControllerFormSubmitStatus(mainView.mc_photopreview['mc_status'],formNameAndEmail,formPhotoSnap,photobooth));

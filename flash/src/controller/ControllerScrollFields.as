@@ -19,7 +19,7 @@
 
 //		private var mtForm:MotionTween;
 		
-		private var mcForm:Sprite;
+		private var mcFormFields:Sprite;
 		private var viewPrev:IView;
 		private var viewNext:IView;
 		
@@ -30,14 +30,14 @@
 
 		private var anForm:Animator;
 
-		public function ControllerScrollFields(mc : Sprite, fieldGroup:FieldGroup) {
-			btnPrev = new ButtonClip(mc['btn_prev']).when(ButtonClipEvent.CLICK,clickPrev);
-			btnNext = new ButtonClip(mc['btn_next']).when(ButtonClipEvent.CLICK,clickNext);
+		public function ControllerScrollFields(mcForm : Sprite, fieldGroup:FieldGroup) {
+			btnPrev = new ButtonClip(mcForm['btn_prev']).when(ButtonClipEvent.CLICK,clickPrev);
+			btnNext = new ButtonClip(mcForm['btn_next']).when(ButtonClipEvent.CLICK,clickNext);
 			
-			viewPrev = new ShowHideView(mc['btn_prev']);
-			viewNext = new ShowHideView(mc['btn_next']);
+			viewPrev = new ShowHideView(mcForm['btn_prev']);
+			viewNext = new ShowHideView(mcForm['btn_next']);
 
-			mcForm = mc['form_fields'];
+			mcFormFields = mcForm['form_fields'];
 
 			this.fieldGroup = fieldGroup;
 			this.scroll = new Scroller(5,AppConfig.FIELD_HEIGHT, mcForm.y);
@@ -48,7 +48,6 @@
 //			mtForm = new MotionTween(mcForm,{tweenMethod:Regular.easeOut,dur:5});
 
 			anForm = new Animator(mcForm, 'y',300);
-
 
 			fieldGroup.when(FieldGroup.EVENT_ADD_ITEM, onItemCountChange);
 			fieldGroup.when(FieldGroup.EVENT_REMOVE_ITEM, onItemCountChange);

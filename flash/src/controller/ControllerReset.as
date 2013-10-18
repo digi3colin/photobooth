@@ -31,7 +31,7 @@
 			formNameAndEmail.when(FormNameAndEmail.EVENT_SUBMIT_END, submitEnd);
 			formPhotoSnap.when(FormPhotoSnap.EVENT_SUBMIT_END, submitEnd);
 
-			btnRetry = new ButtonClip(mcPhotoPreview['btn_retry']).when(ButtonClipEvent.CLICK, userReset);
+			btnRetry = new ButtonClip(mcPhotoPreview['mc_form']['btn_retry']).when(ButtonClipEvent.CLICK, userReset);
 			btnCancel = new ButtonClip(mcPhotoPreview['mc_status']['btn_cancel']).when(ButtonClipEvent.CLICK, userCancel);
 		}
 

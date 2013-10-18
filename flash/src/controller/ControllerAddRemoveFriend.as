@@ -17,11 +17,11 @@
 		private var fieldGroup : FieldGroup;
 		private var btnAddFriend:ButtonClip;
 
-		public function ControllerAddRemoveFriend(mcPhotoPreview:Sprite,fieldGroup:FieldGroup,photobooth:PhotoboothStates){
+		public function ControllerAddRemoveFriend(mcForm:Sprite,fieldGroup:FieldGroup,photobooth:PhotoboothStates){
 			photobooth.when(PhotoboothStates.EVENT_SHOT, initForm);
 			this.fieldGroup = fieldGroup;
-			mcFields = mcPhotoPreview['form_fields'];
-			btnAddFriend = new ButtonClip(mcPhotoPreview['btn_add_friend']).when(ButtonClipEvent.CLICK, clickAddFriend);
+			mcFields = mcForm['form_fields'];
+			btnAddFriend = new ButtonClip(mcForm['btn_add_friend']).when(ButtonClipEvent.CLICK, clickAddFriend);
 		}
 
 		private function initForm(e:Event):void{

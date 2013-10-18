@@ -7,6 +7,7 @@
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
+	import flash.text.TextField;
 	import flash.utils.Timer;
 
 
@@ -51,10 +52,13 @@
 		}
 
 		private function doSend(e:Event):void{
+			//the text require change color 
+			TextField(mcPreview['mc_message']['txt_line1']).textColor=0xFAA61A;
 			//uploadPhoto
 			formPhotoSnap.setImage(
 				photoComposition.composeAsByteArray(mcPreview,{timestamp:photobooth.getSaveTime()})
 			);
+			TextField(mcPreview['mc_message']['txt_line1']).textColor=0xFFFFFF;
 
 			formPhotoSnap.submit(photobooth.getSaveTime());		
 			photobooth.post();

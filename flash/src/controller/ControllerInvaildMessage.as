@@ -20,12 +20,12 @@
 		private var an:Animator;
 		private var panel:Sprite;
 
-		public function ControllerInvaildMessage(mc : Sprite, fieldGroup : FieldGroup, formNameAndEmail : FormNameAndEmail,photobooth:PhotoboothStates) {
+		public function ControllerInvaildMessage(mc_message : Sprite, fieldGroup : FieldGroup, formNameAndEmail : FormNameAndEmail,photobooth:PhotoboothStates) {
 			timer = new Timer(5000,1);
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE, hide);
-			txt = mc['txt'];
+			txt = mc_message['txt'];
 
-			an = new Animator(panel = mc,'y',500);
+			an = new Animator(panel = mc_message,'y',500);
 
 			fieldGroup.when(FieldGroup.EVENT_FIELDS_INVALID, fieldsInvalid);
 			formNameAndEmail.when(FormNameAndEmail.EVENT_INVALID_FORM_BLANK, formNameEmailBlankInvalid);
