@@ -1,6 +1,4 @@
 ﻿package {
-	import controller.ControllerDragOutDelete;
-	import controller.ControllerResetSticker;
 	import asset.MainView;
 
 	import controller.ControllerAddRemoveFriend;
@@ -8,14 +6,15 @@
 	import controller.ControllerCamera;
 	import controller.ControllerCaptureAndShowPhoto;
 	import controller.ControllerCountdown;
+	import controller.ControllerDragOutDelete;
 	import controller.ControllerEditWithSticker;
 	import controller.ControllerFlash;
 	import controller.ControllerFormSubmitStatus;
 	import controller.ControllerGenerateDeviceId;
 	import controller.ControllerInvaildMessage;
 	import controller.ControllerLocalStorage;
-	import controller.ControllerLog;
 	import controller.ControllerReset;
+	import controller.ControllerResetSticker;
 	import controller.ControllerSaveData;
 	import controller.ControllerScreens;
 	import controller.ControllerScrollFields;
@@ -41,13 +40,13 @@
 		private var controllers:Array = [];
 		
 		public function AppDelegate(mainView:MainView) {
-			AppConfig.SHOT_COUNTDOWN = 1;
-			
-			controllers.push(new ControllerLog());
+//			controllers.push(new ControllerLog());
+			controllers.push(new ControllerGenerateDeviceId(AppConfig.TEXT_IO));
+
 			//initalize core models
 			var photobooth:PhotoboothStates 		= new PhotoboothStates();
 			var photoCapture:PhotoCapture 			= new PhotoCapture();
-			var formNameAndEmail:FormNameAndEmail 	= new FormNameAndEmail(AppConfig.DEVICE_ID,AppConfig.MESSAGE.toXMLString(),AppConfig.BASE_URL+AppConfig.SEND_PATH,AppConfig.EVENT_ID);
+			var formNameAndEmail:FormNameAndEmail 	= new FormNameAndEmail(AppConfig.DEVICE_ID,AppConfig.MESSAGE,AppConfig.BASE_URL+AppConfig.SEND_PATH,AppConfig.EVENT_ID);
 			var formPhotoSnap:FormPhotoSnap 		= new FormPhotoSnap(AppConfig.EVENT_ID, AppConfig.BASE_URL+AppConfig.UPLOAD_PATH);
 
 			var fieldGroup:FieldGroup				= new FieldGroup();
@@ -95,12 +94,10 @@
 			controllers.push(new ControllerReset(mainView.mc_photopreview, photobooth, formNameAndEmail, formPhotoSnap));
 
 			//administrator features
-			controllers.push(new ControllerGenerateDeviceId(AppConfig.TEXT_IO));
 			controllers.push(new ControllerShowAdminPanel(mainView.mc_admin,mainView.btn_admin));
 			controllers.push(new ControllerAdminEventName(mainView.mc_admin,mainView.mc_photobooth,mainView.mc_photopreview,AppConfig.TEXT_IO,AppConfig.MESSAGE));
 
-
-			controllers.push(new ControllerDebugScreens(photobooth)); 
+//			controllers.push(new ControllerDebugScreens(photobooth)); 
 			photobooth.start();
 		}
 	}

@@ -25,11 +25,11 @@
 		private var ld : URLLoader;
 		private var submitTime : Number;
 		private var device_id:String;
-		private var message:String;
+		private var message:XML;
 		private var submit_url:String;
 		private var event_id : String;
 
-		public function FormNameAndEmail(device_id:String,message:String,submit_url:String,event_id:String) {
+		public function FormNameAndEmail(device_id:String,message:XML,submit_url:String,event_id:String) {
 			this.device_id = device_id;
 			this.message = message;
 			this.submit_url = submit_url;

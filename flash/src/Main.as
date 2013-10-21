@@ -22,9 +22,9 @@
 		private var platform : IPlatform;
 
 		public function Main(){
+			FASTLog.instance().addGlobalError(this.loaderInfo);
 			//initalise the view;
 			new MainHelper(this,mcVP=new MainView(),this);
-			FASTLog.instance().addGlobalError(this.loaderInfo);
 
 			switch (Capabilities.version.split(' ')[0]){
 				case "IOS":

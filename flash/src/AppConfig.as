@@ -9,7 +9,7 @@
 	public class AppConfig {
 		public static var DEVICE_ID : String = "";
 		public static var REMOTE_SERVER : String = "";
-		public static var BASE_URL : String = "http://vc.digi3studio.com/hk_en/yelloween2013-hk/";
+		public static var BASE_URL : String = "http://www.vcseason-asia.com/hk_en/yelloween2013-hk/";
 		public static var EVENT_ID : String = "hk_yelloween2013";
 		
 		public static var SEND_PATH : String = "card/send.xml?sessionid=";
