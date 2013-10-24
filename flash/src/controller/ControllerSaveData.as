@@ -26,18 +26,20 @@
 
 		private var photoComposition : PhotoComposition;
 
-		private var timerPost:Timer;
+		private var timerPost : Timer;
+		private var cardTitleColor : int;
 
 		//collect data
 		//handing 2 step submit
 
-		public function ControllerSaveData(mc:Sprite, photobooth :PhotoboothStates, fieldGroup : FieldGroup, formNameAndEmail:FormNameAndEmail,formPhotoSnap:FormPhotoSnap,photoComposition:PhotoComposition) {
+		public function ControllerSaveData(mc:Sprite, photobooth :PhotoboothStates, fieldGroup : FieldGroup, formNameAndEmail:FormNameAndEmail,formPhotoSnap:FormPhotoSnap,photoComposition:PhotoComposition,cardTitleColor:int) {
 			this.mcPreview 			= mc['mc_send_preview'];
 			this.photobooth 		= photobooth;
 			this.fieldGroup 		= fieldGroup;
 			this.formNameAndEmail 	= formNameAndEmail;
 			this.formPhotoSnap 		= formPhotoSnap.when(FormPhotoSnap.EVENT_SUBMIT_SUCCESS, onPhotoUploaded);
 			this.photoComposition	= photoComposition;
+			this.cardTitleColor     = cardTitleColor;
 
 			this.timerPost 			= new Timer(500,1);
 			timerPost.addEventListener(TimerEvent.TIMER_COMPLETE, doSend,false, 0, true);
@@ -53,7 +55,7 @@
 
 		private function doSend(e:Event):void{
 			//the text require change color 
-			TextField(mcPreview['mc_message']['txt_line1']).textColor=0xFAA61A;
+			TextField(mcPreview['mc_message']['txt_line1']).textColor=cardTitleColor;
 			//uploadPhoto
 			formPhotoSnap.setImage(
 				photoComposition.composeAsByteArray(mcPreview,{timestamp:photobooth.getSaveTime()})

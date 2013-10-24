@@ -1,6 +1,7 @@
 package controller {
 	import asset.FormFieldFriendName;
 
+	import com.digi3studio.photobooth.form.CheckBoxView;
 	import com.digi3studio.photobooth.form.FieldGroup;
 	import com.digi3studio.photobooth.form.FormNameAndEmail;
 	import com.digi3studio.photobooth.form.FormPhotoSnap;
@@ -18,12 +19,14 @@ package controller {
 		private var formNameAndEmail : FormNameAndEmail;
 		private var formPhotoSnap : FormPhotoSnap;
 		private var fieldGroup : FieldGroup;
+		private var checkBox : CheckBoxView;
 
-		public function ControllerValidateForm(mcForm : Sprite, photobooth : PhotoboothStates,formNameAndEmail:FormNameAndEmail,formPhotoSnap:FormPhotoSnap,fieldGroup:FieldGroup) {
+		public function ControllerValidateForm(mcForm : Sprite, photobooth : PhotoboothStates,formNameAndEmail:FormNameAndEmail,formPhotoSnap:FormPhotoSnap,fieldGroup:FieldGroup,consentBox:CheckBoxView) {
 			this.photobooth = photobooth;
 			this.formNameAndEmail = formNameAndEmail;
 			this.formPhotoSnap = formPhotoSnap;
 			this.fieldGroup = fieldGroup;
+			this.checkBox   = consentBox;
 
 			this.btn_send = new ButtonClip(mcForm['btn_send']).when(ButtonClipEvent.CLICK, onClickSend);
 		}
@@ -44,6 +47,7 @@ package controller {
 			}
 
 			if(formNameAndEmail.validate()==false)return;
+			if(checkBox.validate()==false)return;
 			photobooth.send();
 		}
 	}

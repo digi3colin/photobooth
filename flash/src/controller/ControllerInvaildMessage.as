@@ -1,4 +1,5 @@
 ﻿package controller {
+	import com.digi3studio.photobooth.form.CheckBoxView;
 	import com.digi3studio.photobooth.form.FieldGroup;
 	import com.digi3studio.photobooth.form.FormNameAndEmail;
 	import com.fastframework.module.d3animate.Animator;
@@ -20,7 +21,7 @@
 		private var an:Animator;
 		private var panel:Sprite;
 
-		public function ControllerInvaildMessage(mc_message : Sprite, fieldGroup : FieldGroup, formNameAndEmail : FormNameAndEmail,photobooth:PhotoboothStates) {
+		public function ControllerInvaildMessage(mc_message : Sprite, fieldGroup : FieldGroup, formNameAndEmail : FormNameAndEmail,photobooth:PhotoboothStates,consentBox:CheckBoxView) {
 			timer = new Timer(5000,1);
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE, hide);
 			txt = mc_message['txt'];
@@ -31,6 +32,12 @@
 			formNameAndEmail.when(FormNameAndEmail.EVENT_INVALID_FORM_BLANK, formNameEmailBlankInvalid);
 
 			photobooth.when(PhotoboothStates.EVENT_START_TO_SHOT,hide);
+			consentBox.when(CheckBoxView.EVENT_INVALID, formConsentBoxInvalid);
+		}
+
+		private function formConsentBoxInvalid(e:Event):void{
+			txt.text = "Please accept the data collection policy.";
+			show();
 		}
 
 		private function formNameEmailBlankInvalid(e:Event) : void {

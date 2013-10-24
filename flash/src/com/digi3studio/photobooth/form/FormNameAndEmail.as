@@ -143,3 +143,11 @@ class FieldNameEmail {
 		this.email = email;
 	}
 }
+
+class Checkbox{
+	public var value:Boolean;
+
+	public function Checkbox(value:Boolean = false){
+		this.value = value;	
+	}
+}
