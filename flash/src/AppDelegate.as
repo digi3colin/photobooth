@@ -1,4 +1,5 @@
 ﻿package {
+	import controller.ControllerSwapCamera;
 	import controller.ControllerTerms;
 	import com.digi3studio.photobooth.form.CheckBoxView;
 	import asset.MainView;
@@ -68,6 +69,7 @@
 			//bind the camera
 			controllers.push(new ControllerCamera(mainView.mc_photobooth['mc_photo']));
 			controllers.push(new ControllerCaptureAndShowPhoto(mainView,photobooth,photoCapture));
+			controllers.push(new ControllerSwapCamera(mainView.mc_photobooth['btn_flipcam'], mainView.mc_photobooth['mc_photo']));
 
 			//form ui
 			controllers.push(new ControllerAddRemoveFriend(mainView.mc_photopreview['mc_form'], fieldGroup, photobooth,AppConfig.FIELD_COUNT,AppConfig.FIELD_HEIGHT));
