@@ -15,6 +15,7 @@
 	 * @author Digi3Studio - Colin Leung
 	 */
 	public class ControllerInvaildMessage {
+		private var msgCheckbox:Sprite;
 		private var txt:TextField;
 		private var timer:Timer;
 		
@@ -25,6 +26,8 @@
 			timer = new Timer(5000,1);
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE, hide);
 			txt = mc_message['txt'];
+			msgCheckbox = mc_message['msg_checkbox'];
+			msgCheckbox.visible = false;
 
 			an = new Animator(panel = mc_message,'y',500);
 
@@ -37,16 +40,19 @@
 
 		private function formConsentBoxInvalid(e:Event):void{
 			txt.text = "Please accept the data collection policy.";
+			msgCheckbox.visible = true;
 			show();
 		}
 
 		private function formNameEmailBlankInvalid(e:Event) : void {
 			txt.text="Please fill in your name and email";
+			msgCheckbox.visible = false;
 			show();
 		}
 
 		private function fieldsInvalid(e:Event) : void {
 			txt.text="Please check your name and email";
+			msgCheckbox.visible = false;
 			show();
 		}
 
