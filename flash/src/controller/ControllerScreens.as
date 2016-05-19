@@ -18,13 +18,12 @@ package controller {
 		public function ControllerScreens(mc : MainView, photobooth : PhotoboothStates) {
 			viewPhotoBooth 		= new ShowHideView(mc.mc_photobooth);
 			viewPhotoPreview	= new ShowHideView(mc.mc_photopreview);
-
 			viewForm 			= new ShowHideView(mc.mc_photopreview['mc_form']);
 			viewEditor			= new ShowHideView(mc.mc_photopreview['mc_editor']);
 
-			photobooth.when(PhotoboothStates.EVENT_EDIT,showCard);
-			photobooth.when(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL,showForm);
-			photobooth.when(PhotoboothStates.EVENT_START_TO_SHOT, readyToShot);
+			photobooth.when(PhotoboothStates.EVENT_EDIT, showCard);
+			photobooth.when(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL, showForm);
+			photobooth.when(PhotoboothStates.EVENT_IDLE, readyToShot);
 		}
 
 		private function readyToShot(e:Event):void{
@@ -33,8 +32,8 @@ package controller {
 		}
 
 		private function showCard(e:Event):void{
-			viewPhotoBooth.getView().visible=false;
-			viewPhotoBooth.getView().alpha=0;
+			viewPhotoBooth.getView().visible = false;
+			viewPhotoBooth.getView().alpha = 0;
 			viewPhotoBooth.hide();
 			viewPhotoPreview.show();
 

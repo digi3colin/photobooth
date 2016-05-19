@@ -20,6 +20,9 @@
 		private var an:Animator;
 		private var panel:Sprite;
 		private var mcTxt:MovieClip;
+		
+		private var oy:Number;
+		private var ty:Number;
 
 		public function ControllerTerms(mcTermsButtonEN : Sprite, mcTermsButtonKR:Sprite, mcTerms:Sprite) {
 			mcTxt = mcTerms['txt_terms'];
@@ -32,20 +35,23 @@
 			btnEN.when(ButtonClipEvent.CLICK, showEN);
 			btnKR.when(ButtonClipEvent.CLICK, showKR);
 			btnClose.when(ButtonClipEvent.CLICK, hide);
+			
+			this.oy = mcTerms.y;
+			this.ty = mcTerms.y - mcTerms.height;
 		}
 
 		private function showEN(e:Event):void{
 			mcTxt.gotoAndStop('en');
-			an.to(AppConfig.KIOSK_HEIGHT - panel.height);
+			an.to(this.ty);
 		}
 
 		private function showKR(e:Event):void{
 			mcTxt.gotoAndStop('kr');
-			an.to(AppConfig.KIOSK_HEIGHT - panel.height);
+			an.to(this.ty);
 		}
 
 		private function hide(e:Event):void{
-			an.to(AppConfig.KIOSK_HEIGHT);
+			an.to(this.oy);
 		}
 	}
 }

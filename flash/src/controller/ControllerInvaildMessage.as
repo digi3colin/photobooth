@@ -21,6 +21,9 @@
 		
 		private var an:Animator;
 		private var panel:Sprite;
+		private var oy:Number;
+		private var sy:Number;
+
 
 		public function ControllerInvaildMessage(mc_message : Sprite, fieldGroup : FieldGroup, formNameAndEmail : FormNameAndEmail,photobooth:PhotoboothStates,consentBox:CheckBoxView) {
 			timer = new Timer(5000,1);
@@ -29,12 +32,15 @@
 			msgCheckbox = mc_message['msg_checkbox'];
 			msgCheckbox.visible = false;
 
-			an = new Animator(panel = mc_message,'y',500);
+			an = new Animator(panel = mc_message,'y', 500);
+			this.oy = mc_message.y;
+			this.sy = mc_message.y - mc_message.height;
+
 
 			fieldGroup.when(FieldGroup.EVENT_FIELDS_INVALID, fieldsInvalid);
 			formNameAndEmail.when(FormNameAndEmail.EVENT_INVALID_FORM_BLANK, formNameEmailBlankInvalid);
 
-			photobooth.when(PhotoboothStates.EVENT_START_TO_SHOT,hide);
+			photobooth.when(PhotoboothStates.EVENT_IDLE,hide);
 			consentBox.when(CheckBoxView.EVENT_INVALID, formConsentBoxInvalid);
 		}
 
@@ -57,13 +63,13 @@
 		}
 
 		private function show():void{
-			an.to(AppConfig.KIOSK_HEIGHT-panel.height);
+			an.to(this.sy);
 			timer.reset();
 			timer.start();		
 		}
 
 		private function hide(e:Event):void{
-			an.to(AppConfig.KIOSK_HEIGHT);
+			an.to(this.oy);
 		}
 	}
 }

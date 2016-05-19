@@ -23,7 +23,7 @@ package controller {
 
 		private function clickShotButton(e:Event):void{
 			//prepare to shot. do real shot after preparation. for example: countdown
-			photobooth.prepareShot();
+			photobooth.start();
 		}
 		
 		private function clickNextAfterEdit(e:Event):void{

@@ -1,4 +1,5 @@
 ﻿package controller {
+	import flash.utils.clearInterval;
 	import com.digi3studio.photobooth.form.FormNameAndEmail;
 	import com.digi3studio.photobooth.form.FormPhotoSnap;
 	import com.digi3studio.photobooth.form.FormSession;
@@ -8,8 +9,7 @@
 
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
+	import flash.utils.setTimeout;
 
 	/**
 	 * @author Digi3Studio - Colin Leung
@@ -17,44 +17,59 @@
 	public class ControllerReset {
 		private var btnRetry:ButtonClip;
 		private var photobooth:PhotoboothStates;
-		private var timer : Timer;
+
 		private var btnCancel : ButtonClip;
 		private var formNameAndEmail : FormNameAndEmail;
 		private var formPhotoSnap : FormPhotoSnap;
 		private var btnRetryOnEdit : ButtonClip;
+		
+		private var iid:int;
 
 		public function ControllerReset(mcPhotoPreview : Sprite, photobooth : PhotoboothStates, formNameAndEmail : FormNameAndEmail, formPhotoSnap : FormPhotoSnap) {
-			timer = new Timer(2000,1);
-			timer.addEventListener(TimerEvent.TIMER_COMPLETE, doReset,false, 0, true);
 			this.photobooth = photobooth;
 			this.formNameAndEmail = formNameAndEmail;
 			this.formPhotoSnap = formPhotoSnap;
-			formNameAndEmail.when(FormNameAndEmail.EVENT_SUBMIT_END, submitEnd);
-			formPhotoSnap.when(FormPhotoSnap.EVENT_SUBMIT_END, submitEnd);
-
+			this.photobooth.when(PhotoboothStates.EVENT_SAVE_POST, onEmailSend);
+			
 			btnRetry = new ButtonClip(mcPhotoPreview['mc_form']['btn_retry']).when(ButtonClipEvent.CLICK, userReset);
 			btnRetryOnEdit = new ButtonClip(mcPhotoPreview['mc_editor']['btn_retry']).when(ButtonClipEvent.CLICK, userReset);
 			btnCancel = new ButtonClip(mcPhotoPreview['mc_status']['btn_cancel']).when(ButtonClipEvent.CLICK, userCancel);
 		}
 
-		private function submitEnd(e:Event):void{
-			timer.reset();
-			timer.start();
+		private function onEmailSend(e:Event):void{
+			clearInterval(iid);
+			iid = setTimeout(onEmailSendTimeout,5000);//5sec timeout
+
+			formNameAndEmail.when(FormNameAndEmail.EVENT_SUBMIT_END, onNameSubmitEnd);
+		}
+
+		private function onEmailSendTimeout():void{
+			//giveup to wait the response..
+			this.formNameAndEmail.submitPending();
+			clearInterval(iid);
+			iid = setTimeout(doReset, 2000);
+		}
+
+		private function onNameSubmitEnd(e:Event):void{
+			clearInterval(iid);
+			iid = setTimeout(doReset, 2000);
 		}
 
 		private function userReset(e:Event):void{
 			FASTLog.instance().log('ACTION : USER RESET at '+new Date().time, FASTLog.LOG_LEVEL_ACTION);
-			doReset(e);
+			doReset();
 		}
 
 		private function userCancel(e:Event):void{
 			formNameAndEmail.clear();
 			formPhotoSnap.clear();
 			FASTLog.instance().log('ACTION : USER CANCEL at '+new Date().time, FASTLog.LOG_LEVEL_ACTION);
-			doReset(e);
+			doReset();
 		}
 
-		private function doReset(e : Event) : void {
+		private function doReset() : void {
+			clearInterval(iid);
+			formNameAndEmail.removeEventListener(FormNameAndEmail.EVENT_SUBMIT_END, onNameSubmitEnd);
 			photobooth.reset();
 			FormSession.id = "";
 		}

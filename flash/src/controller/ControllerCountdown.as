@@ -32,8 +32,10 @@
 			anStar = new Animator(mcStar, MCEnum.scale);
 			anStar.imp = new AnimatorScale();
 
-			photobooth.when(PhotoboothStates.EVENT_START_TO_SHOT, hide);
-			photobooth.when(PhotoboothStates.EVENT_PREPARE_SHOT, startCount);
+			photobooth.when(PhotoboothStates.EVENT_IDLE, hide);
+			photobooth.when(PhotoboothStates.EVENT_START_TO_SHOT, startCount);
+			photobooth.when(PhotoboothStates.EVENT_PREPARE_SHOT, loopCount);
+			photobooth.when(PhotoboothStates.EVENT_RESET, onReset);
 
 			this.countDown = countDown;
 			countDown.when(CountDown.EVENT_COUNTING, counting);
@@ -41,8 +43,16 @@
 			countDown.when(CountDown.EVENT_DONE, countEnd);
 		}
 
+		private function onReset(e:Event):void{
+			this.countDown.stop();
+		}
+
 		private function startCount(e:Event):void{
-			countDown.start();
+			this.countDown.startExt(AppConfig.FIRST_BURST_EXTRA_COUNT);
+		}
+
+		private function loopCount(e:Event):void{
+			this.countDown.start();
 		}
 
 		private function doStartCount(e:Event):void{

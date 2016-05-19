@@ -16,10 +16,11 @@
 	 */
 	public class FormNameAndEmail extends FASTEventDispatcher implements IForm{
 		public static const EVENT_INVALID_FORM_BLANK:String = "EVENT_INVALID_FORM_BLANK";
-		public static const EVENT_SUBMIT_SUCCESS:String = "EVENT_SUBMIT_SUCCESS";
-		public static const EVENT_SUBMIT_FAIL:String = "EVENT_SUBMIT_FAIL";
-		public static const EVENT_SUBMIT_START:String = "EVENT_SUBMIT_START";
-		public static const EVENT_SUBMIT_END:String = "EVENT_SUBMIT_END";
+		public static const EVENT_SUBMIT_SUCCESS:String     = "EVENT_SUBMIT_SUCCESS";
+		public static const EVENT_SUBMIT_FAIL:String        = "EVENT_SUBMIT_FAIL";
+		public static const EVENT_SUBMIT_START:String       = "EVENT_SUBMIT_START";
+		public static const EVENT_SUBMIT_END:String         = "EVENT_SUBMIT_END";
+		public static const EVENT_SUBMIT_PENDING:String     = "EVENT_SUBMIT_PENDING";
 
 		private var nameAndEmails:Array;
 		private var ld : URLLoader;
@@ -97,6 +98,10 @@
 			
 			ld.load(req);
 			dispatchEvent(new Event(FormNameAndEmail.EVENT_SUBMIT_START));
+		}
+
+		public function submitPending():void{
+			dispatchEvent(new Event(FormNameAndEmail.EVENT_SUBMIT_PENDING));
 		}
 
 		private function onSubmitIOError(e:Event):void{

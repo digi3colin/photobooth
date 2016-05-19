@@ -19,17 +19,8 @@ package controller {
 			video.smoothing = true;
 			video.height = AppConfig.CAMERA_HEIGHT;
 
-//			if(btnSwap!=null)btnSwap.addEventListener(MouseEvent.MOUSE_DOWN, swapCamera);
 			updateCamera();
 		}
-		
-/*		private function swapCamera(e:Event):void
-		{
-			//change camera id
-			//flip video object;
-			AppConfig.CAMERA_ID = AppConfig.CAMERA_ID=="0"?"1":"0";
-			updateCamera();
-		}*/
 		
 		private function updateCamera():void{
             camera = Camera.getCamera(AppConfig.CAMERA_ID);

@@ -11,8 +11,6 @@
 	import flash.utils.Timer;
 
 
-
-
 	/**
 	 * @author Digi3Studio - Colin Leung
 	 */
@@ -54,13 +52,19 @@
 		}
 
 		private function doSend(e:Event):void{
-			//the text require change color 
-			TextField(mcPreview['mc_message']['txt_line1']).textColor=cardTitleColor;
+			if(mcPreview['mc_message'] != null){
+				//the text require change color 
+				TextField(mcPreview['mc_message']['txt_line1']).textColor=cardTitleColor;				
+			}
+
 			//uploadPhoto
 			formPhotoSnap.setImage(
 				photoComposition.composeAsByteArray(mcPreview,{timestamp:photobooth.getSaveTime()})
 			);
-			TextField(mcPreview['mc_message']['txt_line1']).textColor=0xFFFFFF;
+
+			if(mcPreview['mc_message'] != null){
+				TextField(mcPreview['mc_message']['txt_line1']).textColor=0xFFFFFF;							
+			}
 
 			formPhotoSnap.submit(photobooth.getSaveTime());		
 			photobooth.post();

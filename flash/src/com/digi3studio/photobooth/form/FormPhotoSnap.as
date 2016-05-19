@@ -27,10 +27,12 @@
 		private var submitTime : Number;
 		private var event_id : String;
 		private var submit_url : String;
+		private var image_format: String;
 
-		public function FormPhotoSnap(event_id:String,submit_url:String) {
+		public function FormPhotoSnap(event_id:String,submit_url:String, image_format:String) {
 			this.event_id = event_id;
 			this.submit_url = submit_url;
+			this.image_format = image_format;
 
 			ld = new URLLoader();
 			ld.dataFormat = URLLoaderDataFormat.TEXT;
@@ -68,7 +70,7 @@
 			//ld.load(new URLRequest('http://www.digi3studio.com/preview/doot/test'));
 			//create url request
 		
-			var req:URLRequest = new URLRequest(this.submit_url+"&event_id="+this.event_id);
+			var req:URLRequest = new URLRequest(this.submit_url+"&event_id="+this.event_id+"&format="+this.image_format);
 			req.contentType = 'application/octet-stream';
 			req.method = URLRequestMethod.POST;
 			req.data = image;

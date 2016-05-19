@@ -16,8 +16,9 @@ package {
 			this.photobooth.when(PhotoboothStates.EVENT_SHOT, onStatus);
 			this.photobooth.when(PhotoboothStates.EVENT_START_TO_SHOT, onStatus);
 			this.photobooth.when(PhotoboothStates.EVENT_VIEW_INPUT_EMAIL, onStatus);
+			this.photobooth.when(PhotoboothStates.EVENT_IDLE, onStatus);
 		}
-		
+
 		private function onStatus(e:Event):void{
 			trace(e.type);
 		}

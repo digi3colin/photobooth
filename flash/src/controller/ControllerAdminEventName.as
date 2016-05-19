@@ -95,11 +95,15 @@ package controller {
 //			var line1:String = '<TEXTFORMAT LEADING="2"><P ALIGN="'+(AppConfig.SHOW_LOGO?'LEFT':'CENTER')+'"><FONT FACE="Veuve Clicquot Serif" SIZE="7" COLOR="#FFFFFF" LETTERSPACING="0" KERNING="0">'+unescape(title)+'</FONT></P></TEXTFORMAT>';
 //			var line2:String = '<TEXTFORMAT LEADING="2"><P ALIGN="'+(AppConfig.SHOW_LOGO?'LEFT':'CENTER')+'"><FONT FACE="Veuve Clicquot Serif" SIZE="50" COLOR="#FFFFFF" LETTERSPACING="0" KERNING="0">'+unescape(sub)+'</FONT></P></TEXTFORMAT>';
 
-			TextField(msgShow['txt_line1']).htmlText = title;
-			TextField(msgShow['txt_line2']).htmlText = sub;
+			if(this.msgShow != null){
+				TextField(msgShow['txt_line1']).htmlText = title;
+				TextField(msgShow['txt_line2']).htmlText = sub;
+			}
 
-			TextField(msgPreview['txt_line1']).htmlText = title;
-			TextField(msgPreview['txt_line2']).htmlText = sub;
+			if(this.msgPreview != null){
+				TextField(msgPreview['txt_line1']).htmlText = title;
+				TextField(msgPreview['txt_line2']).htmlText = sub;
+			}
 		}
 	}
 }

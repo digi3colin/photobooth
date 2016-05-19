@@ -1,8 +1,8 @@
 ﻿package com.digi3studio {
-	import flash.events.TimerEvent;
 	import com.fastframework.core.FASTEventDispatcher;
 
 	import flash.events.Event;
+	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 
 	/**
@@ -24,17 +24,34 @@
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE, countDone, false, 0, true);
 		}
 
-		public function start() : void {
-			currentCount = maxCount;
+		public function startExt(extraCount:int) : void{
+			currentCount = maxCount+ extraCount;
+			timer.repeatCount = currentCount;
 			timer.reset();
 			timer.start();
 			dispatchEvent(new Event(CountDown.EVENT_START));
 		}
-		
+
+		public function start() : void {
+			currentCount = maxCount;
+			timer.repeatCount = currentCount;
+			timer.reset();
+			timer.start();
+			dispatchEvent(new Event(CountDown.EVENT_START));
+		}
+
+		public function reset() :void{
+			timer.reset();
+		}
+
+		public function stop() :void{
+			timer.stop();
+		}
+
 		private function countDone(e:Event):void{
 			dispatchEvent(new Event(CountDown.EVENT_DONE));
 		}
-		
+
 		private function counting(e:Event):void{
 			currentCount--;
 			dispatchEvent(new Event(CountDown.EVENT_COUNTING));
